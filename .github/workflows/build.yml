@@ -1,0 +1,52 @@
+name: Build React + .NET App
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout source code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Setup Node.js for React
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install & Build React App
+        working-directory: react
+        run: |
+          yarn install
+          yarn build
+
+      # 3. Setup .NET
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'  # hoặc 8.0.x nếu bạn dùng .NET 8
+
+      # 4. Copy React build to .NET wwwroot
+      - name: Copy React to .NET
+        run: |
+          rm -rf dotnet/wwwroot
+          cp -r react/dist dotnet/wwwroot
+
+      # 5. Publish .NET API
+      - name: Publish .NET App
+        working-directory: dotnet
+        run: dotnet publish -c Release -o publish
+
+      # 6. Upload build artifacts
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: fullstack-publish
+          path: dotnet/publish/
