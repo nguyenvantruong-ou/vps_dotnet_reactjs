@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install & Build React App
         working-directory: react
@@ -31,7 +31,7 @@ jobs:
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '7.0.x'  # hoặc 8.0.x nếu bạn dùng .NET 8
+          dotnet-version: '7.0.x' 
 
       # 4. Copy React build to .NET wwwroot
       - name: Copy React to .NET
