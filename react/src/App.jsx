@@ -39,11 +39,6 @@ function App() {
 
         <h1>Vite + React + Router</h1>
 
-        <nav style={{ marginBottom: '1rem' }}>
-          <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
-          <Link to="/about">About</Link>
-        </nav>
-
         <div className="card">
           <button onClick={() => setCount((count) => count + 1)}>
             count is {count}
@@ -53,11 +48,7 @@ function App() {
           </p>
         </div>
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-
+        
         <p className="read-the-docs">
           Click on the Vite and React logos to learn more
         </p>
