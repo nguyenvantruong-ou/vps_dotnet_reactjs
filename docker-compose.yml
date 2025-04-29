@@ -6,13 +6,25 @@ services:
       context: ./react
       dockerfile: Dockerfile
     ports:
-      - '8080:80'
-    # depends_on:
-    #   - backend
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
 
-  # backend:
-  #   build:
-  #     context: ./donet
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - '5000:5000'
+  backend:
+    build:
+      context: ./dotnet
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_URLS=http://+:5000
+    # volumes:
+    #   - ./dotnet:/app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

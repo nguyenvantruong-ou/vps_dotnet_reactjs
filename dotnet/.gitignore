@@ -1,0 +1,42 @@
+# Ignore Visual Studio for Mac configuration folder
+.vscode/
+
+# Ignore Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Ignore Windows Installer files for macOS
+.DS_Store
+
+# Ignore the .vs folder
+.vs/
+
+# Ignore the .idea folder (for JetBrains IDEs)
+.idea/
+
+# Ignore user-specific files
+.vs2019/
+.vs2017/
+
+# Ignore build results
+bin/
+obj/
+
+# Ignore NuGet packages
+*.nupkg
+
+# Ignore Visual Studio for Mac configuration files
+.vscode/
+
+# Ignore ASP.NET Core environment variable file
+appsettings.Development.json
+appsettings.Production.json
+
+# Ignore Azure environment files
+.env
+
+# Ignore backup files
+*.bak
+*.swp
