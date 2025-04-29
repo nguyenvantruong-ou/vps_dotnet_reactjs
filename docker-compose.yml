@@ -6,7 +6,7 @@ services:
       context: ./react
       dockerfile: Dockerfile
     ports:
-      - '3000:80'
+      - '8080:80'
     # depends_on:
     #   - backend
 
