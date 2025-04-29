@@ -4,24 +4,6 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 
-function Home() {
-  return (
-    <div>
-      <h2>Home Page</h2>
-      <p>Welcome to the Home page!</p>
-    </div>
-  );
-}
-
-function About() {
-  return (
-    <div>
-      <h2>About Page</h2>
-      <p>This is the About page.</p>
-    </div>
-  );
-}
-
 function App() {
   const [count, setCount] = useState(0);
 
@@ -37,7 +19,7 @@ function App() {
           </a>
         </div>
 
-        <h1>Vite + React + Router</h1>
+        <h1>Vite + React + Router + VPS</h1>
 
         <div className="card">
           <button onClick={() => setCount((count) => count + 1)}>
