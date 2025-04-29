@@ -19,6 +19,6 @@ jobs:
         script: |
           cd /home/azureuser/vps_dotnet_reactjs
           git reset --hard
-          git pull origin production
+          git pull origin main
           docker-compose down
           docker-compose up -d --build
