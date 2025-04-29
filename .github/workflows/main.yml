@@ -19,7 +19,7 @@ jobs:
         script: | 
           sudo su
           cd vps_dotnet_reactjs
-          git reset --hardgit stash
+          git reset --hard  # Separate git reset command
           git stash -u
           git pull origin main
           git stash pop
