@@ -19,9 +19,10 @@ jobs:
         script: | 
           sudo su
           cd vps_dotnet_reactjs
-          git reset --hard
-          git clean -fd
+          git reset --hardgit stash
+          git stash -u
           git pull origin main
+          git stash pop
           git config pull.rebase false 
           docker-compose down
           docker-compose up -d --build
