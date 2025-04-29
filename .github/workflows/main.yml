@@ -1,4 +1,4 @@
-name: Deploy to VPS
+name: CD to VPS
 
 on:
   push:
@@ -7,18 +7,18 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          script: |
-            cd /home/azureuser/vps_dotnet_reactjs/vps/vps_dotnet_reactjs
-            git reset --hard
-            git pull origin production
-            docker-compose down
-            docker-compose build --no-cache
-            docker-compose up -d
+    - name: Deploy to VPS via SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }} 
+        port: 22
+        script: |
+          cd /home/azureuser/vps_dotnet_reactjs
+          git reset --hard
+          git pull origin production
+          docker-compose down
+          docker-compose up -d --build
