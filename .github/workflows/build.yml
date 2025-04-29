@@ -1,4 +1,4 @@
-name: React + .NET App
+name: React + .NET Application
 
 on:
   push:
