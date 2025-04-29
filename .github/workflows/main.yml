@@ -17,9 +17,12 @@ jobs:
         key: ${{ secrets.SSH_KEY }} 
         port: 22
         script: | 
-          sudo su
-          cd vps_dotnet_reactjs
+          cd /home/azureuser/vps_dotnet_reactjs
+          git config --global --add safe.directory /home/azureuser/vps_dotnet_reactjs
+          git reset --hard
+          git stash -u
           git pull origin main
-          git config pull.rebase false 
-          docker-compose down
-          docker-compose up -d --build
+          git stash pop
+          git config pull.rebase false
+          sudo docker-compose down
+          sudo docker-compose up -d --build
